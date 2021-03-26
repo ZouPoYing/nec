@@ -5,17 +5,17 @@
                 <h4>欢迎注册</h4>
                 <div>
                     <span class="left1"></span>
-                    <input type="text" placeholder="请输入您的QQ邮箱号码" v-model="register.email" class="email" @blur="email" />
+                    <input type="text" placeholder="请输入您的QQ邮箱号码" v-model.trim="register.email" class="email" @blur="email" />
                 </div>
             </div>
             <span class="reg-email">{{regEmail}}</span>
             <div class="div-verification">
-                <input type="text" placeholder="请输入验证码" v-model="register.code" class="code" @blur="code" />
+                <input type="text" placeholder="请输入验证码" v-model.trim="register.code" class="code" @blur="code" />
                 <button type="button" class="btn-getcoder" @click="getCode">获取邮箱验证码</button>
             </div>
             <span class="reg-code">{{regCode}}</span>
             <div class="div-password">
-                <input type="password" placeholder="请输入密码" v-model="register.password" class="password" @blur="password" />
+                <input type="password" placeholder="请输入密码" v-model.trim="register.password" class="password" @blur="password" />
             </div>
             <span class="reg-password">{{regPassword}}</span>
             <div class="div-check">
@@ -55,7 +55,7 @@
             getCode() {
                 if (this.regEmail == '') {
                     const obj = this.register.email;
-                    axios.post('http://192.168.1.106:9191/ncm/user/getEmailNumber', obj,{
+                    axios.post('http://localhost:9191/ncm/user/getEmailNumber', obj,{
                             headers: {
                                 'Content-Type': 'application/json;charset=UTF-8'
                             },
@@ -72,7 +72,7 @@
                     var that = this;
                     var obj = this.register;
                     console.log(obj);
-                    axios.post('http://192.168.1.106:9191/ncm/user/register', obj,{
+                    axios.post('http://localhost:9191/ncm/user/register', obj,{
                             headers: {
                                 'Content-Type': 'application/json;charset=UTF-8'
                             },

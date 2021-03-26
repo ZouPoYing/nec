@@ -3,14 +3,14 @@ import {request} from "./request"
 // 获取发现页面的轮播图以及每日推荐等数据的url
 /*export function getFindMultidata() {
     return  request({
-        url: 'http://123.207.32.32:8000/api/h8/home/multidata'
+        url: 'http://123.207.32.32:8000/api/n3/home/multidata'
     })
 }*/
 
 // 获取发现页面展示数据
 export function getFindShowData(page, type) {
     return  request({
-        url: 'http://123.207.32.32:8000/api/h8/home/data',
+        url: 'http://152.136.185.210:8000/api/n3/home/data',
         params: {
             page,
             type

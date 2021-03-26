@@ -1,13 +1,12 @@
 <template>
     <div id="recommend">
-        <div class="recommend-item" v-for="item in recommends" :key="item.id">
+        <div class="recommend-item" v-for="(item, index) in recommends" :key="item.id" @click="itemClick(index)">
             <a  :href="item.link">
-                <img :src="item.image" alt="">
+                <img :src="'http://localhost:9191/ncm/'+item.img" alt="">
                 <div>{{item.title}}</div>
             </a>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -21,6 +20,20 @@
                 }
             }
         },
+        methods: {
+            itemClick(id) {
+                console.log(id);
+                if (id == '0') {
+                    this.$router.push('/everyday')
+                } else if (id == '1') {
+                    this.$router.push('/songList')
+                } else if (id == '2') {
+                    this.$router.push('/ranking')
+                } else {
+                    return
+                }
+            }
+        }
     }
 </script>
 
@@ -37,7 +50,10 @@
     }
 
     .recommend-item img {
-        width: 60px;
-        height: 60px;
+        width: 40px;
+        height: 40px;
+        background: red;
+        border-radius:50%;
+        margin: 10px;
     }
 </style>

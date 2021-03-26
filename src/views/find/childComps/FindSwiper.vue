@@ -2,7 +2,7 @@
     <swiper>
         <swiper-item v-for="(item,index) in banners" :key="index">
             <a :href="item.link">
-                <img :src="item.image" alt="">
+                <img :src="'http://localhost:9191/ncm/'+item.img" alt="">
             </a>
         </swiper-item>
     </swiper>

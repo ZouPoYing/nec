@@ -1,14 +1,13 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from "./router"
-//import VueSwiper from "./vue-awesome-swiper"
-//import 'swiper/dist/css/swiper.css'
-
+import store from "./store"
 
 Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App),
   router,
+  store,
 }).$mount('#app')
 require('./assets/css/base.css')

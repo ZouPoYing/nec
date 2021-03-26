@@ -5,18 +5,18 @@
                 <div class="div-text">
                     <h4>欢迎登录</h4>
                     <span class="left1"></span>
-                    <input type="text" class="text"  placeholder="请输入邮箱号码" v-model="login.email" @blur="email" />
+                    <input type="text" class="text"  placeholder="请输入邮箱号码" v-model.trim="login.email" @blur="email" />
                 </div>
                 <span class="reg-email">{{regEmail}}</span>
                 <div class="div-password" >
                     <span class="left2"></span>
-                    <input type="password" class="password"  placeholder="请输入密码" v-model="login.password" @blur="password" />
+                    <input type="password" class="password"  placeholder="请输入密码" v-model.trim="login.password" @blur="password" />
                 </div>
                 <span class="reg-password">{{regPassword}}</span>
-                <div class="div-check" >
+                <!-- <div class="div-check" >
                     <input class="checkbox" type="checkbox" />
                     <span class="re-register">自动登录</span>
-                </div>
+                </div> -->
                 <div class="login-btn" >
                     <button type="button" class="button" @click="log">登录</button>
                 </div>
@@ -34,6 +34,7 @@
 
 <script>
     import axios from "axios";
+    //import vuex from 'vuex'
 
     export default {
         name: "Login",
@@ -45,7 +46,8 @@
                 },
                 regEmail: '',
                 regPassword: '',
-                message: ''
+                message: '',
+                userId: ''
             }
         },
         methods: {
@@ -53,7 +55,7 @@
                 if (this.regEmail == '' || this.regPassword == '') {
                     var that = this;
                     var obj = this.login;
-                    axios.post('http://192.168.1.106:9191/ncm/user/login',obj,{
+                    axios.post('http://localhost:9191/ncm/user/login',obj,{
                         headers: {
                             'Content-Type': 'application/json;charset=UTF-8'
                         },
@@ -64,9 +66,10 @@
                         console.log(response.data);
                         if (response.data != '') {
                             that.$router.push({
-                                path: '/set',
-                                query: response.data
+                                path: '/set'
                             });
+                            console.log(response.data.userId);
+                            that.$store.commit('getUserId',response.data.userId)
                         } else {
                             that.message = '账号或密码错误'
                         }
@@ -105,6 +108,10 @@
 
     .login {
         display: block;
+    }
+
+    .login input {
+        margin-left: 5px;
     }
 
     .div-text {

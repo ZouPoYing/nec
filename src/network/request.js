@@ -1,7 +1,7 @@
 import axios from 'axios'
 export function request(config){
   const instance = axios.create({
-    /*baseURL: 'http://123.207.32.32:8000/api/h3',*/
+    /*baseURL: 'http://152.136.185.210:8000/api/n3',*/
     /*baseURL: 'http://192.168.1.106:9191/ncm',*/
     timeout: 5000,
     withCredentials: true,
@@ -14,7 +14,7 @@ export function request(config){
   // 写法
   /*return new Promise((resolve, reject) => {
     const instance = axios.create({
-      baseURL: 'http://123.207.32.32:8000',
+      baseURL: 'http://152.136.185.210:8000',
       timeout: 5000
     })
     instance(config)
